@@ -1,7 +1,16 @@
+
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import RaceTable from './components/RaceTable'
+import Charts from './components/Charts'
+
 function App() {
   return (
     <div>
-      <h1>Ferrari Dashboard</h1>
+      <Navbar />
+      <Hero />
+      <RaceTable />
+      <Charts />
     </div>
   )
 }
