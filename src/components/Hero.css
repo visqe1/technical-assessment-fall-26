@@ -4,7 +4,7 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    background: #0b0b0b;
+    background: #1d0000;
 }
 
 .hero-glow {
@@ -13,9 +13,9 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: radial-gradient(ellipse 120% 110% at 62% 50%, rgba(150, 0, 0, 0.45) 0%, rgba(60, 0, 0, 0.15) 75%, transparent 80%);
+    background: radial-gradient(ellipse 120% 110% at 62% 50%, rgba(255, 0, 0, 0.9) 0%, rgba(60, 0, 0, 0.1) 80%, transparent 10%);
     filter: blur(30px);
-    animation: glowPulse 6s ease-in-out infinite alternate;
+    animation: glowPulse 2.5s ease-in-out infinite alternate;
     z-index: 0;
     pointer-events: none;
 }
@@ -114,7 +114,7 @@
     position: absolute;
     left: 5%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(232, 0, 13, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(232, 0, 13, 0.5), transparent);
     animation: streak linear infinite;
     opacity: 0;
 }
