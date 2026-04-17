@@ -4,7 +4,7 @@ function Navbar() {
     return (
         <nav>
             <div className="nav-logo">
-                <div className="logo-sq">SF</div>
+                <img src="./ferrari-logo.svg" alt="Ferrari" className="logo-sq" />
                 <span className="nav-title"><span className="red">Scuderia</span> Ferrari</span>
             </div>
             <div className="nav-links">
