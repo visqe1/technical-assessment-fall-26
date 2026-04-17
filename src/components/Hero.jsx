@@ -3,6 +3,15 @@ import './Hero.css'
 function Hero() {
     return (
         <section className="hero" id="overview">
+            <div className="streaks-container">
+                <div className="streak s1"></div>
+                <div className="streak s2"></div>
+                <div className="streak s3"></div>
+                <div className="streak s4"></div>
+                <div className="streak s5"></div>
+                <div className="streak s6"></div>
+                <div className="streak s7"></div>
+            </div>
             <div className="hero-glow"></div>
             <div className="hero-left">
                 <div className="hero-eyebrow">
@@ -31,6 +40,17 @@ function Hero() {
                         <div className="hl">Race Wins</div>
                     </div>
                 </div>
+            </div>
+            <div className="hero-right">
+                <video
+                    className="hero-video"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                >
+                    <source src="/ferrariclip.mp4" type="video/mp4" />
+                </video>
             </div>
         </section>
     )
