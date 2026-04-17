@@ -13,7 +13,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: radial-gradient(ellipse 120% 110% at 62% 50%, rgba(255, 0, 0, 0.9) 0%, rgba(60, 0, 0, 0.1) 80%, transparent 10%);
+    background: radial-gradient(ellipse 120% 110% at 62% 50%, rgba(255, 0, 0, 0.9) 0%, rgba(60, 0, 0, 0.1) 70%, transparent 10%);
     filter: blur(30px);
     animation: glowPulse 2.5s ease-in-out infinite alternate;
     z-index: 0;
@@ -63,7 +63,7 @@
 .t-outline {
     display: block;
     color: transparent;
-    -webkit-text-stroke: 1.5px rgba(245, 242, 238, 0.18);
+    -webkit-text-stroke: 1.5px rgba(245, 242, 238, 0.2);
 }
 
 .t-white {
@@ -80,11 +80,11 @@
 .hero-body {
   font-size: 1rem;
   line-height: 1.8;
-  color: #666;
+  color: rgba(255, 255, 255, 0.7);
   max-width: 340px;
   margin-bottom: 3rem;
   padding-left: 1rem;
-  border-left: 2px solid #444;
+  border-left: 2px solid #ffffff;
 }
 
 .hero-stats {
@@ -106,7 +106,7 @@
   font-size: 0.52rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #444;
+  color: #ffffff;
   margin-top: 0.2rem;
 }
 
