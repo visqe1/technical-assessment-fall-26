@@ -10,8 +10,14 @@ table {
     border-collapse: collapse;
 }
 
+.table-wrap {
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    overflow-x: auto;
+}
+
 thead tr {
     background: #F5F2EE;
+    border-left: 3px solid #E8000D;
 }
 
 th {
@@ -22,6 +28,7 @@ th {
     letter-spacing: 0.25em;
     text-transform: uppercase;
     font-weight: 500;
+    font-family: 'DM Mono', monospace
 }
 
 tbody tr {
@@ -35,8 +42,9 @@ tbody tr:hover {
 
 td {
     padding: .85rem 1.2rem;
-    font-size: .77rem;
+    font-size: .78rem;
     color: #555;
+    font-family: 'DM Mono', monospace
 }
 
 .td-gp {
@@ -76,6 +84,7 @@ td {
     text-transform: uppercase;
     color: #E8000D;
     margin-bottom: .4rem;
+    font-family: 'DM Mono', monospace;
 }
 
 .race-h2 {

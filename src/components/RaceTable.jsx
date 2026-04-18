@@ -26,12 +26,12 @@ function RaceTable() {
 
     const filteredRaces = races.filter(race => {
         race.raceName.toLowerCase().includes(search.toLowerCase()) ||
-        race.Circuit.circuitName.toLowerCase().includes(search.toLowerCase()) ||
-        race.Results.some(result =>
-            (result.Driver.givenName + ' ' + result.Driver.familyName).toLowerCase().includes(search.toLowerCase())
-        )
+            race.Circuit.circuitName.toLowerCase().includes(search.toLowerCase()) ||
+            race.Results.some(result =>
+                (result.Driver.givenName + ' ' + result.Driver.familyName).toLowerCase().includes(search.toLowerCase())
+            )
     })
-   
+
 
     return (
         <div className="race-section">
@@ -51,43 +51,45 @@ function RaceTable() {
                     />
                 </div>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>RND</th>
-                        <th>GRAND PRIX</th>
-                        <th>CIRCUIT</th>
-                        <th>DRIVER</th>
-                        <th>GRID</th>
-                        <th>FINISH</th>
-                        <th>POINTS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* map each race's individual result */}
-                    {races.map((race) => (
-                        race.Results.filter(individualResult =>
-                        // filter out individual results that don't match the search
-                            search === '' ||
-                            (individualResult.Driver.givenName + ' ' + individualResult.Driver.familyName).toLowerCase().includes(search.toLowerCase()) ||
-                            race.raceName.toLowerCase().includes(search.toLowerCase()) ||
-                            race.Circuit.circuitName.toLowerCase().includes(search.toLowerCase())
-                        )
-                        // take the filtered individual results of each Result and give it a table row
-                        .map((individualResult, index) => (
-                            <tr key={`${race.round}-${index}`}>
-                                <td>{race.round}</td>
-                                <td className="td-gp">{race.raceName}</td>
-                                <td>{race.Circuit.circuitName}</td>
-                                <td>{individualResult.Driver.givenName} {individualResult.Driver.familyName}</td>
-                                <td>{individualResult.grid}</td>
-                                <td><span className={`chip ${getChipClass(individualResult.position)}`}>{individualResult.position}</span></td>
-                                <td>{individualResult.points}</td>
-                            </tr>
-                        ))
-                    ))}
-                </tbody>
-            </table>
+            <div className="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>RND</th>
+                            <th>GRAND PRIX</th>
+                            <th>CIRCUIT</th>
+                            <th>DRIVER</th>
+                            <th>GRID</th>
+                            <th>FINISH</th>
+                            <th>POINTS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* map each race's individual result */}
+                        {races.map((race) => (
+                            race.Results.filter(individualResult =>
+                                // filter out individual results that don't match the search
+                                search === '' ||
+                                (individualResult.Driver.givenName + ' ' + individualResult.Driver.familyName).toLowerCase().includes(search.toLowerCase()) ||
+                                race.raceName.toLowerCase().includes(search.toLowerCase()) ||
+                                race.Circuit.circuitName.toLowerCase().includes(search.toLowerCase())
+                            )
+                                // take the filtered individual results of each Result and give it a table row
+                                .map((individualResult, index) => (
+                                    <tr key={`${race.round}-${index}`}>
+                                        <td>{String(race.round).padStart(2, '0')}</td>
+                                        <td className="td-gp">{race.raceName}</td>
+                                        <td>{race.Circuit.circuitName}</td>
+                                        <td>{individualResult.Driver.givenName} {individualResult.Driver.familyName}</td>
+                                        <td>{individualResult.grid}</td>
+                                        <td><span className={`chip ${getChipClass(individualResult.position)}`}>{individualResult.position}</span></td>
+                                        <td>{individualResult.points}</td>
+                                    </tr>
+                                ))
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }
