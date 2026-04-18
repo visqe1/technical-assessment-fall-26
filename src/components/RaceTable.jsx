@@ -3,6 +3,7 @@ import './RaceTable.css'
 
 function RaceTable() {
     const [races, setRaces] = useState([])
+    const [search, setSearch] = useState('')
 
     useEffect(() => {
         async function fetchRaces() {
@@ -23,6 +24,15 @@ function RaceTable() {
         return 'cx'
     }
 
+    const filteredRaces = races.filter(race => {
+        race.raceName.toLowerCase().includes(search.toLowerCase()) ||
+        race.Circuit.circuitName.toLowerCase().includes(search.toLowerCase()) ||
+        race.Results.some(result =>
+            (result.Driver.givenName + ' ' + result.Driver.familyName).toLowerCase().includes(search.toLowerCase())
+        )
+    })
+   
+
     return (
         <div className="race-section">
             <div className="race-head">
@@ -36,6 +46,8 @@ function RaceTable() {
                     <input
                         type="text"
                         placeholder="Search driver, circuit, country..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                     />
                 </div>
             </div>
@@ -52,16 +64,25 @@ function RaceTable() {
                     </tr>
                 </thead>
                 <tbody>
+                    {/* map each race's individual result */}
                     {races.map((race) => (
-                        race.Results.map((result, index) => (
+                        race.Results.filter(individualResult =>
+                        // filter out individual results that don't match the search
+                            search === '' ||
+                            (individualResult.Driver.givenName + ' ' + individualResult.Driver.familyName).toLowerCase().includes(search.toLowerCase()) ||
+                            race.raceName.toLowerCase().includes(search.toLowerCase()) ||
+                            race.Circuit.circuitName.toLowerCase().includes(search.toLowerCase())
+                        )
+                        // take the filtered individual results of each Result and give it a table row
+                        .map((individualResult, index) => (
                             <tr key={`${race.round}-${index}`}>
                                 <td>{race.round}</td>
                                 <td className="td-gp">{race.raceName}</td>
                                 <td>{race.Circuit.circuitName}</td>
-                                <td>{result.Driver.givenName} {result.Driver.familyName}</td>
-                                <td>{result.grid}</td>
-                                <td><span className={`chip ${getChipClass(result.position)}`}>{result.position}</span></td>
-                                <td>{result.points}</td>
+                                <td>{individualResult.Driver.givenName} {individualResult.Driver.familyName}</td>
+                                <td>{individualResult.grid}</td>
+                                <td><span className={`chip ${getChipClass(individualResult.position)}`}>{individualResult.position}</span></td>
+                                <td>{individualResult.points}</td>
                             </tr>
                         ))
                     ))}
