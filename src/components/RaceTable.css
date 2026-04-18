@@ -1,0 +1,90 @@
+.race-section {
+    padding: 5rem 3rem;
+    background: #111010;
+    position: relative;
+    z-index: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead tr {
+    background: #F5F2EE;
+}
+
+th {
+    color: #060606;
+    padding: 0.8rem 1.2rem;
+    text-align: left;
+    font-size: .58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background .12s;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+td {
+    padding: .85rem 1.2rem;
+    font-size: .77rem;
+    color: #555;
+}
+
+.td-gp {
+    color: #F5F2EE;
+    font-weight: 500;
+}
+
+.td-position {
+    color: #E8000D;
+    font-weight: 500;
+}
+
+.chip {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid;
+    font-size: 0.7rem;
+    border: 1px solid;
+    font-weight: 500;
+}
+
+.c1 { color: #C8A96E; border-color: rgba(200, 169, 110, 0.4); background: rgba(200, 169, 110, 0.08); }
+.c2 { color: #ccc; border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.04); }
+.c3 { color: #a07050; border-color: rgba(160, 112, 80, 0.3); background: rgba(160, 112, 80, 0.06); }
+.cx { color: #7a7979; border-color: rgba(255, 255, 255, 0.066); background: transparent; }
+
+.race-head {
+    margin-bottom: 2.5rem;
+}
+
+.race-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #E8000D;
+    margin-bottom: .4rem;
+}
+
+.race-h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+.red {
+  color: #E8000D;
+}

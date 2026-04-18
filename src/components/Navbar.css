@@ -46,3 +46,7 @@ nav {
     transition: color 0.2s;
     font-family: 'Barlow Condensed', sans-serif;
 }
+
+.nav-links a:hover {
+    color: #ff1616;
+}
