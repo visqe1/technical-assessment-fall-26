@@ -66,7 +66,10 @@ function RaceTable() {
                         type="text"
                         placeholder="Search driver, circuit, country..."
                         value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={(e) => {
+                            setSearch(e.target.value)}
+                            setCurrentPage(1)
+                        }
                     />
                 </div>
             </div>
@@ -98,14 +101,14 @@ function RaceTable() {
                         ))}
                     </tbody>
                 </table>
-                <div className="pagination">
-                    <div className="pg-info">Showing {(currentPage - 1) * rowsPerPage + 1}-{Math.min(filteredRows.length, currentPage * rowsPerPage)} of {filteredRows.length} entries </div>
-                    <div className="pg-buttons">
-                        <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1}>⟪</button>
-                        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>‹</button>
-                        <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === (Math.ceil(filteredRows.length / rowsPerPage))}>›</button>
-                        <button onClick={() => setCurrentPage(Math.ceil(filteredRows.length / rowsPerPage))} disabled={currentPage === Math.ceil(filteredRows.length / rowsPerPage)}>⟫</button>
-                    </div>
+            </div>
+            <div className="pagination">
+                <div className="pg-info">Showing {(currentPage - 1) * rowsPerPage + 1}-{Math.min(filteredRows.length, currentPage * rowsPerPage)} of {filteredRows.length} entries </div>
+                <div className="pg-buttons">
+                    <button className="pg-button" onClick={() => setCurrentPage(1)} disabled={currentPage === 1}>⟪</button>
+                    <button className="pg-button" onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>‹</button>
+                    <button className="pg-button" onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === (Math.ceil(filteredRows.length / rowsPerPage))}>›</button>
+                    <button className="pg-button" onClick={() => setCurrentPage(Math.ceil(filteredRows.length / rowsPerPage))} disabled={currentPage === Math.ceil(filteredRows.length / rowsPerPage)}>⟫</button>
                 </div>
             </div>
         </div>
