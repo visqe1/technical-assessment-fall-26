@@ -4,6 +4,7 @@ import './RaceTable.css'
 function RaceTable() {
     const [races, setRaces] = useState([])
     const [search, setSearch] = useState('')
+    const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {
         async function fetchRaces() {
@@ -17,6 +18,19 @@ function RaceTable() {
         fetchRaces()
     }, [])
 
+    // flatten races
+    const allRows = races.flatMap(race =>
+        race.Results.map(individualResult => ({
+            round: race.round,
+            raceName: race.raceName,
+            circuitName: race.Circuit.circuitName,
+            driverName: individualResult.Driver.givenName + ' ' + individualResult.Driver.familyName,
+            grid: individualResult.grid,
+            position: individualResult.position,
+            points: individualResult.points
+        }))
+    )
+
     function getChipClass(position) {
         if (position == 1) return 'c1'
         if (position == 2) return 'c2'
@@ -24,14 +38,19 @@ function RaceTable() {
         return 'cx'
     }
 
-    const filteredRaces = races.filter(race => {
-        race.raceName.toLowerCase().includes(search.toLowerCase()) ||
-            race.Circuit.circuitName.toLowerCase().includes(search.toLowerCase()) ||
-            race.Results.some(result =>
-                (result.Driver.givenName + ' ' + result.Driver.familyName).toLowerCase().includes(search.toLowerCase())
-            )
-    })
+    const filteredRows = allRows.filter(row =>
+        row.raceName.toLowerCase().includes(search.toLowerCase()) ||
+        row.circuitName.toLowerCase().includes(search.toLowerCase()) ||
+        row.driverName.toLowerCase().includes(search.toLowerCase())
+    )
 
+    const rowsPerPage = 20
+
+    const numPages = Math.ceil(filteredRows.length / rowsPerPage)
+    const paginatedRows = filteredRows.slice(
+        (currentPage - 1) * rowsPerPage,
+        currentPage * rowsPerPage
+    )
 
     return (
         <div className="race-section">
@@ -66,29 +85,22 @@ function RaceTable() {
                     </thead>
                     <tbody>
                         {/* map each race's individual result */}
-                        {races.map((race) => (
-                            race.Results.filter(individualResult =>
-                                // filter out individual results that don't match the search
-                                search === '' ||
-                                (individualResult.Driver.givenName + ' ' + individualResult.Driver.familyName).toLowerCase().includes(search.toLowerCase()) ||
-                                race.raceName.toLowerCase().includes(search.toLowerCase()) ||
-                                race.Circuit.circuitName.toLowerCase().includes(search.toLowerCase())
-                            )
-                                // take the filtered individual results of each Result and give it a table row
-                                .map((individualResult, index) => (
-                                    <tr key={`${race.round}-${index}`}>
-                                        <td>{String(race.round).padStart(2, '0')}</td>
-                                        <td className="td-gp">{race.raceName}</td>
-                                        <td>{race.Circuit.circuitName}</td>
-                                        <td>{individualResult.Driver.givenName} {individualResult.Driver.familyName}</td>
-                                        <td>{individualResult.grid}</td>
-                                        <td><span className={`chip ${getChipClass(individualResult.position)}`}>{individualResult.position}</span></td>
-                                        <td>{individualResult.points}</td>
-                                    </tr>
-                                ))
+                        {paginatedRows.map((row, index) => (
+                            <tr key={index}>
+                                <td>{String(row.round).padStart(2, '0')}</td>
+                                <td className="td-gp">{row.raceName}</td>
+                                <td>{row.circuitName}</td>
+                                <td>{row.driverName}</td>
+                                <td>{row.grid}</td>
+                                <td><span className={`chip ${getChipClass(row.position)}`}>{row.position}</span></td>
+                                <td>{row.points}</td>
+                            </tr>
                         ))}
                     </tbody>
                 </table>
+                <div className="pagination">
+                    
+                </div>
             </div>
         </div>
     )
