@@ -1,5 +1,5 @@
 import './Charts.css'
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line} from 'recharts'
+import { BarChart, Bar, XAxis, ComposedChart, Area, ResponsiveContainer, Line, CartesianGrid} from 'recharts'
 
 function Charts() {
     // hardcoded data for charts
@@ -35,8 +35,8 @@ function Charts() {
                     </div>
                     <ResponsiveContainer width="100%" height={200}>
                         <BarChart data={pointsByYear}>
-                            <XAxis dataKey="year" />
-                            <Bar dataKey="points" fill="#E8000D" label={{ position: 'top', fontSize: 11 }}/>
+                            <XAxis dataKey="year" tick={{ fontFamily: 'DM MONO', fontSize: 11, fill: '#444' }} tickLine={false}/>
+                            <Bar dataKey="points" fill="#b00d0dff" label={{ position: 'top', fontSize: 9, fill: '#666', fontFamily: 'DM Mono'}} />
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
@@ -45,11 +45,20 @@ function Charts() {
                         <div className="chart-eyebrow">Race Victories</div>
                         <div className="chart-title">Wins per <span className="gold">Year</span></div>
                     </div>
-                    <ResponsiveContainer width="100%" height={200}>
-                        <LineChart data={winsByYear}>
-                            <XAxis dataKey="year" />
-                            <Line type="linear" dataKey="wins" stroke="#C8A96E" dot={{ fill: "#C8A96E"}} />
-                        </LineChart>
+                    <ResponsiveContainer width="100%" height={180}>
+                        <ComposedChart data={winsByYear}  margin={{ top: 10, right: 20, left: 20, bottom: 0 }}>
+                            {/* definition for gradient to fill area under line */}
+                            <defs>
+                                <linearGradient id="winsGradient" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0%" stopColor="#C8A96E" stopOpacity={0.3} />
+                                    <stop offset="100%" stopColor="#C8A96E" stopOpacity={0} />
+                                </linearGradient>
+                            </defs>
+                            <CartesianGrid strokeDasharray="" stroke="rgba(255,255,255,0.04)" vertical={false} />
+                            <XAxis dataKey="year" tickMargin={15} tick={{fontFamily: 'DM Mono', fontSize: 11, fill: '#444' }} axisLine={false} tickLine={false} />
+                            <Area type="linear" dataKey="wins" stroke="none" fill="url(#winsGradient)"  />
+                            <Line type="linear" dataKey="wins" stroke="#C8A96E" dot={{ fill: "#C8A96E", r: 2}} strokeWidth={2}/>
+                        </ComposedChart>
                     </ResponsiveContainer>
                 </div>
             </div>
