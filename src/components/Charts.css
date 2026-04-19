@@ -1,8 +1,8 @@
 .analytics-section {
-    padding: 5rem 3rem;
-    background: #161414;
-    position: relative;
-    z-index: 1;
+  padding: 5rem 3rem;
+  background: #161414;
+  position: relative;
+  z-index: 1;
 }
 
 .an-head {
@@ -26,9 +26,9 @@
 }
 
 .charts-grid {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 1.5rem;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1.5rem;
 }
 
 .chart-bar {
@@ -93,8 +93,11 @@
   color: #F5F2EE;
 }
 
-
-
 .gold {
   color: #C8A96E;
+}
+
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
 }

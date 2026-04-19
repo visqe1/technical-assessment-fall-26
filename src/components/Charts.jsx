@@ -1,5 +1,5 @@
 import './Charts.css'
-import { BarChart, Bar, XAxis, ComposedChart, Area, ResponsiveContainer, Line, CartesianGrid} from 'recharts'
+import { BarChart, Bar, XAxis, Tooltip, ComposedChart, Area, ResponsiveContainer, Line, CartesianGrid} from 'recharts'
 
 function Charts() {
     // hardcoded data for charts
@@ -54,6 +54,22 @@ function Charts() {
                                     <stop offset="100%" stopColor="#C8A96E" stopOpacity={0} />
                                 </linearGradient>
                             </defs>
+                            <Tooltip
+                                content={
+                                    ({ active, payload}) => {
+                                        if (active && payload && payload.length) {
+                                            return (
+                                                <div style={{ background: '#1a1a1a', border: '1px solid #C8A96E', padding: '0.4rem 0.8rem', fontFamily: 'DM Mono', fontSize: '0.75rem', color: '#C8A96E' }}>
+                                                    {payload[0].value} wins
+                                                </div>
+                                            )
+                                        }
+                                        return null
+                                    }
+                                }
+                                cursor={false}
+                                isAnimationActive={false}
+                            />
                             <CartesianGrid strokeDasharray="" stroke="rgba(255,255,255,0.04)" vertical={false} />
                             <XAxis dataKey="year" tickMargin={15} tick={{fontFamily: 'DM Mono', fontSize: 11, fill: '#444' }} axisLine={false} tickLine={false} />
                             <Area type="linear" dataKey="wins" stroke="none" fill="url(#winsGradient)"  />
