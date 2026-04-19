@@ -53,7 +53,7 @@ function RaceTable() {
     )
 
     return (
-        <div className="race-section">
+        <div className="race-section" id="results">
             <div className="race-head">
                 <div>
                     <div className="race-eyebrow">2024 Season · Constructor Data</div>

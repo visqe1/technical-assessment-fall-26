@@ -9,7 +9,7 @@ function Charts() {
         { year: '2021', points: 292 },
         { year: '2022', points: 554 },
         { year: '2023', points: 406 },
-        { year: '2024', points: 652 },
+        { year: '2024', points: 646 },
     ]
 
     const winsByYear = [
@@ -22,7 +22,7 @@ function Charts() {
     ]
 
     return (
-        <div className="analytics-section">
+        <div className="analytics-section" id="charts">
             <div className="an-head">
                 <div className="an-eyebrow">Points · Wins · Season Breakdown</div>
                 <div className="an-h2">Constructor <span className="red">Analytics</span></div>
