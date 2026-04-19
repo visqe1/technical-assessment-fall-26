@@ -18,6 +18,19 @@ body {
     display: none !important;
   }
 
+  .nav-links a {
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-year {
+    display: none;
+  }
+
   /* hero */
   .hero {
     height: auto !important;
