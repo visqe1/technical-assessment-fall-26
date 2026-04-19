@@ -67,9 +67,9 @@ function RaceTable() {
                         placeholder="Search driver, circuit, country..."
                         value={search}
                         onChange={(e) => {
-                            setSearch(e.target.value)}
+                            setSearch(e.target.value)
                             setCurrentPage(1)
-                        }
+                        }}
                     />
                 </div>
             </div>
