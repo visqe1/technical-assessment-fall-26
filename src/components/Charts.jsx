@@ -43,7 +43,7 @@ function Charts() {
                 <div className="chart chart-line">
                     <div className="chart-head">
                         <div className="chart-eyebrow">Race Victories</div>
-                        <div className="chart-title">Wins per <span className="red">Year</span></div>
+                        <div className="chart-title">Wins per <span className="gold">Year</span></div>
                     </div>
                     <ResponsiveContainer width="100%" height={200}>
                         <LineChart data={winsByYear}>

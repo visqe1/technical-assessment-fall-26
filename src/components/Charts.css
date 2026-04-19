@@ -1,0 +1,100 @@
+.analytics-section {
+    padding: 5rem 3rem;
+    background: #161414;
+    position: relative;
+    z-index: 1;
+}
+
+.an-head {
+  margin-bottom: 3rem;
+}
+
+.an-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 0.4rem;
+}
+
+.an-h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 1.5rem;
+}
+
+.chart-bar {
+  background: #111010;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+
+.chart-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #F5F2EE;
+}
+
+.chart-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 3px;
+  background: #E8000D;
+}
+
+.chart-line {
+  background: rgba(200, 169, 110, 0.04);
+  border: 1px solid rgba(200, 169, 110, 0.12);
+  position: relative;
+}
+
+.chart-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #C8A96E;
+}
+
+.chart-head {
+  margin: 1.8rem;
+}
+
+.chart-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.57rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 0.3rem;
+}
+
+.chart-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  color: #F5F2EE;
+}
+
+
+
+.gold {
+  color: #C8A96E;
+}
