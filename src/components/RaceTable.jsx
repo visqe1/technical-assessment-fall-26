@@ -8,7 +8,7 @@ function RaceTable() {
 
     useEffect(() => {
         async function fetchRaces() {
-            const res = await fetch('http://localhost:5001/api/ferrari');
+            const res = await fetch('https://technical-assessment-fall-26-p7np.onrender.com/api/ferrari');
             const data = await res.json()
 
             setRaces(data)
@@ -41,7 +41,7 @@ function RaceTable() {
         <div className="race-section" id="results">
             <div className="race-head">
                 <div>
-                    <div className="race-eyebrow">2024 Season · Constructor Data</div>
+                    <div className="race-eyebrow">All Seasons · Constructor Data</div>
                     <div className="race-h2">Race <span className="red">Results</span></div>
                 </div>
             </div>
