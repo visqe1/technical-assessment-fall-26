@@ -8,28 +8,13 @@ function RaceTable() {
 
     useEffect(() => {
         async function fetchRaces() {
-            const res = await fetch('https://api.jolpi.ca/ergast/f1/2024/constructors/ferrari/results.json?limit=100');
+            const res = await fetch('http://localhost:5001/api/ferrari');
             const data = await res.json()
 
-            const fetchedRaces = data.MRData.RaceTable.Races
-            setRaces(fetchedRaces)
-            console.log(fetchedRaces)
+            setRaces(data)
         }
         fetchRaces()
     }, [])
-
-    // flatten races
-    const allRows = races.flatMap(race =>
-        race.Results.map(individualResult => ({
-            round: race.round,
-            raceName: race.raceName,
-            circuitName: race.Circuit.circuitName,
-            driverName: individualResult.Driver.givenName + ' ' + individualResult.Driver.familyName,
-            grid: individualResult.grid,
-            position: individualResult.position,
-            points: individualResult.points
-        }))
-    )
 
     function getChipClass(position) {
         if (position == 1) return 'c1'
@@ -38,7 +23,7 @@ function RaceTable() {
         return 'cx'
     }
 
-    const filteredRows = allRows.filter(row =>
+    const filteredRows = races.filter(row =>
         row.raceName.toLowerCase().includes(search.toLowerCase()) ||
         row.circuitName.toLowerCase().includes(search.toLowerCase()) ||
         row.driverName.toLowerCase().includes(search.toLowerCase())
